@@ -1,0 +1,13 @@
+-- Query 1: Total Revenue by Month
+-- Business question: How is revenue trending month by month?
+
+SELECT
+    strftime('%Y-%m', o.order_date) AS month,
+    ROUND(SUM(p.price * oi.quantity), 2) AS total_revenue,
+    COUNT(DISTINCT o.order_id) AS total_orders
+FROM orders o
+JOIN order_items oi ON o.order_id = oi.order_id
+JOIN products p ON oi.product_id = p.product_id
+WHERE o.status = 'completed'
+GROUP BY month
+ORDER BY month;
