@@ -36,8 +36,6 @@ sqlite3 ecommerce.db
 .read queries/total_revenue.sql
 ```
 
-## Screenshots
-*(Add query output screenshots or chart exports here)*
 
 ## Key Learnings
 - Writing multi-table JOINs for customer and order data
