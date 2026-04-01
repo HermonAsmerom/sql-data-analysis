@@ -11,31 +11,38 @@ Using a sample e-commerce dataset, I wrote structured SQL queries to answer real
 
 ## Tech Stack
 - SQL (SQLite / PostgreSQL compatible)
-- DB Browser for SQLite (or any SQL client)
-- Optional: Python + Matplotlib for visualisation
+- Python (database generation)
+- Matplotlib (data visualisation)
 
 ## Queries Included
-
 | Query | Business Question |
 |---|---|
 | `total_revenue.sql` | What is total revenue by month? |
 | `top_products.sql` | Which products drive the most sales? |
 | `customer_retention.sql` | What % of customers return after first purchase? |
-| `segment_analysis.sql` | Which customer segments are most valuable? |
-| `revenue_trend.sql` | How has revenue trended over time? |
+| `revenue_by_category.sql` | Which category generates the most revenue? |
+
+## Screenshots
+
+![Revenue by Month](01_revenue_by_month.png)
+![Top Products](02_top_products.png)
+![Customer Retention](03_customer_retention.png)
+![Revenue by Category](04_revenue_by_category.png)
 
 ## Sample Insight
-> Customers who made a second purchase within 30 days had a 3x higher lifetime value than one-time buyers.
+> Returning and loyal buyers represent the highest lifetime value customers — retention strategy should prioritise this segment.
 
 ## How to Run
 ```bash
-# Open the database
+# Step 1 — Generate the database
+python create_database.py
+
+# Step 2 — Open the database
 sqlite3 ecommerce.db
 
-# Run a query
-.read queries/total_revenue.sql
+# Step 3 — Run a query
+.read total_revenue.sql
 ```
-
 
 ## Key Learnings
 - Writing multi-table JOINs for customer and order data
@@ -44,5 +51,5 @@ sqlite3 ecommerce.db
 
 ## Next Steps
 - Connect to a live database via Python (psycopg2)
-- Build a visual dashboard using Tableau or Metabase
+- Build a visual dashboard using Tableau or Looker Studio
 - Add A/B test analysis queries
